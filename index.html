@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CareerNexus - Connecting Students, Skills & Opportunities." />
+  <title>CareerNexus | Placement Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">CN</span><span>Career<span>Nexus</span></span></a>
+    <nav><a href="#features">Features</a><a href="#workflow">How it works</a><a href="#analytics">Analytics</a><a href="#contact">Contact</a></nav>
+    <button class="btn btn-primary" onclick="openLogin('Student')">Get Started</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">AI-POWERED PLACEMENT PLATFORM</div>
+        <h1>Connect talent with <span>opportunity.</span></h1>
+        <p>CareerNexus brings students, recruiters and placement teams together in one intelligent platform for campus hiring.</p>
+        <div class="hero-actions"><button class="btn btn-primary btn-lg" onclick="openLogin('Student')">Student Login</button><button class="btn btn-secondary btn-lg" onclick="openLogin('Recruiter')">Recruiter Login</button></div>
+        <div class="trust"><div><strong>2,500+</strong><small>Students</small></div><div><strong>120+</strong><small>Companies</small></div><div><strong>850+</strong><small>Offers</small></div></div>
+      </div>
+      <div class="hero-dashboard">
+        <div class="dashboard-head"><div><small>Placement Overview</small><h3>2026–27 Season</h3></div><span class="live"><i></i> Live</span></div>
+        <div class="metric-grid"><div class="metric"><small>Placement Rate</small><strong>82.4%</strong><span class="up">↑ 8.6%</span></div><div class="metric"><small>Total Offers</small><strong>850</strong><span class="up">↑ 14.2%</span></div></div>
+        <div class="chart"><div class="bars"><i style="height:42%"></i><i style="height:57%"></i><i style="height:50%"></i><i style="height:69%"></i><i style="height:63%"></i><i style="height:82%"></i><i style="height:92%"></i></div><div class="months"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span></div></div>
+        <div class="match-row"><div class="avatar">MS</div><div><strong>Software Engineer</strong><small>Microsoft · Bengaluru</small></div><b>94% Match</b></div>
+      </div>
+    </section>
+
+    <section id="features" class="section"><div class="section-title"><div class="eyebrow">ONE PLATFORM</div><h2>Everything needed for modern campus hiring.</h2><p>From student profiles to final offers, manage the complete placement lifecycle.</p></div>
+      <div class="feature-grid">
+        <article><span class="icon">🎓</span><h3>Student Hub</h3><p>Profiles, resumes, applications, assessments, interviews and personalized opportunities.</p></article>
+        <article><span class="icon">🏢</span><h3>Recruiter Portal</h3><p>Create drives, define eligibility, review applicants, shortlist candidates and issue offers.</p></article>
+        <article><span class="icon">🤖</span><h3>NexusAI</h3><p>AI-powered career recommendations, resume analysis, skill-gap insights and placement chat.</p></article>
+        <article><span class="icon">📊</span><h3>Placement Analytics</h3><p>Real-time placement rates, package trends, company hiring and branch-level insights.</p></article>
+        <article><span class="icon">📝</span><h3>Smart Assessments</h3><p>Timed aptitude, technical and coding tests with automatic evaluation and results.</p></article>
+        <article><span class="icon">📅</span><h3>Interview Manager</h3><p>Schedule rounds, send notifications and keep every candidate's interview journey organized.</p></article>
+      </div>
+    </section>
+
+    <section id="workflow" class="section workflow"><div class="section-title"><div class="eyebrow">REAL-WORLD WORKFLOW</div><h2>From profile to placement.</h2></div><div class="steps"><div><b>01</b><h3>Build Profile</h3><p>Students complete verified academic and career profiles.</p></div><div><b>02</b><h3>Match</h3><p>Eligibility and AI matching identify relevant opportunities.</p></div><div><b>03</b><h3>Assess</h3><p>Students complete company assessments and interviews.</p></div><div><b>04</b><h3>Get Selected</h3><p>Offers are recorded and placement analytics update automatically.</p></div></div></section>
+
+    <section id="analytics" class="section analytics"><div class="analytics-card"><div><div class="eyebrow">PLACEMENT INTELLIGENCE</div><h2>Decisions backed by data.</h2><p>Track the metrics that matter to students, recruiters and college leadership.</p><button class="btn btn-primary" onclick="openLogin('Placement Officer')">View Officer Dashboard</button></div><div class="mini-chart"><div class="ring"><strong>82%</strong><small>Placed</small></div><ul><li><span>Highest package</span><b>₹32 LPA</b></li><li><span>Average package</span><b>₹8.4 LPA</b></li><li><span>Total offers</span><b>850</b></li></ul></div></div></section>
+
+    <section id="contact" class="cta"><div><div class="eyebrow">CAREERNEXUS</div><h2>Ready to transform campus placements?</h2><p>Give students better opportunities and placement teams better visibility.</p></div><button class="btn btn-light" onclick="openLogin('Super Admin')">Open Demo</button></section>
+  </main>
+
+  <footer><div class="brand"><span class="brand-mark">CN</span><span>Career<span>Nexus</span></span></div><p>CareerNexus © 2026 | Connecting Students, Skills & Opportunities.</p></footer>
+
+  <div id="loginModal" class="modal hidden"><div class="modal-box"><button class="close" onclick="closeLogin()">×</button><div class="brand"><span class="brand-mark">CN</span><span>Career<span>Nexus</span></span></div><h2 id="loginTitle">Welcome back</h2><p id="loginSubtitle">Sign in to continue.</p><form onsubmit="demoLogin(event)"><label>Email<input id="email" type="email" placeholder="you@college.edu" required></label><label>Password<input type="password" placeholder="••••••••" required></label><button class="btn btn-primary full" type="submit">Sign in</button></form><div class="demo-note">Demo interface · Connect backend authentication for production use.</div></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
