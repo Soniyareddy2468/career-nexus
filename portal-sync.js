@@ -1,0 +1,10 @@
+/* Live bridge: recruiter/admin views read and write the same CareerNexus store as students. */
+(function(){
+ function syncApps(){const d=cnLoad();S.apps=d.applications.map(a=>[a.student,a.studentId?.includes('AI')?'AIML':'CSE','—',a.job,a.status,a.id]);}
+ const oldRender=render;
+ render=function(){syncApps();oldRender();};
+ window.review=function(i){const d=cnLoad(),a=d.applications[i];if(!a)return;show('Applicant Review',`<div class="checklist"><div class="check"><span>Candidate</span><b>${a.student}</b></div><div class="check"><span>Student ID</span><b>${a.studentId}</b></div><div class="check"><span>Company / Role</span><b>${a.company} · ${a.job}</b></div><div class="check"><span>Status</span><b>${a.status}</b></div></div><div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap"><button class="btn primary" onclick="liveStatus('${a.id}','Shortlisted')">Shortlist</button><button class="btn secondary" onclick="liveStatus('${a.id}','Assessment')">Send Assessment</button><button class="btn secondary" onclick="liveStatus('${a.id}','Rejected')">Reject</button><button class="btn secondary" onclick="liveStatus('${a.id}','Selected')">Select</button></div>`)};
+ window.liveStatus=function(id,status){cnUpdateApplication(id,status);if(status==='Assessment'){const d=cnLoad(),a=d.applications.find(x=>x.id===id);if(a)cnAssignAssessment({student:a.student,company:a.company,title:a.company+' Technical Assessment'});}if(status==='Selected'){const d=cnLoad(),a=d.applications.find(x=>x.id===id);if(a)cnScheduleInterview({student:a.student,company:a.company,job:a.job,round:'Final HR',date:'2026-10-20',time:'11:00',mode:'Virtual'});}M.classList.add('hidden');toast('Updated '+status+' — student notified');render();};
+ window.addLiveInterview=function(id){const d=cnLoad(),a=d.applications.find(x=>x.id===id);if(!a)return;cnScheduleInterview({student:a.student,company:a.company,job:a.job,round:'Technical Round',date:'2026-10-18',time:'14:00',mode:'Virtual'});toast('Interview scheduled');render()};
+ window.addEventListener('careernexus-sync',render);window.addEventListener('storage',render);syncApps();
+})();
